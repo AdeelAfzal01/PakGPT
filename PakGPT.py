@@ -28,6 +28,7 @@ with st.sidebar:
     openai_api_key = st.text_input("Enter OpenAI API Key", type="password")
     if openai_api_key:
         st.session_state.api_key = openai_api_key
+        
 
 # Initial assistant message
 initial_message = """
@@ -61,7 +62,7 @@ if "api_key" in st.session_state:
         openai.api_key = st.session_state.api_key
 
         # Load the embedding model and vectorstore
-        embeddings = OpenAIEmbeddings(model=OPENAI_EMBEDDING_MODEL)
+        embeddings = OpenAIEmbeddings(model=OPENAI_EMBEDDING_MODEL, openai_api_key=st.session_state.api_key)
         persisted_vectorstore = FAISS.load_local(LOCAL_VECTORSTORE, embeddings, allow_dangerous_deserialization=True)
 
         # Chat history
@@ -78,7 +79,7 @@ if "api_key" in st.session_state:
 
         # LLM
         streaming_callback = StreamingStdOutCallbackHandler()
-        llm = ChatOpenAI(model_name=OPENAI_LLM_MODEL, temperature=0, max_tokens=2500, timeout=30, streaming=True, callbacks=[streaming_callback])
+        llm = ChatOpenAI(model_name=OPENAI_LLM_MODEL, openai_api_key=st.session_state.api_key, temperature=0, max_tokens=2500, timeout=30, streaming=True, callbacks=[streaming_callback])
 
         # Set up the conversation chain
         prompt_template = """
