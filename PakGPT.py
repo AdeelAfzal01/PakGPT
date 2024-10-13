@@ -22,7 +22,7 @@ OPENAI_LLM_MODEL = "gpt-4o"
 
 # Sidebar content: prompt user to input their OpenAI API key
 with st.sidebar:
-    st.title('🤖 RightsBot: Your Constitutional Guide')
+    st.title('🤖 PakGPT Bot : Your Constitutional Guide')
     st.markdown("Please enter your OpenAI API key to start using the chatbot.")
 
     openai_api_key = st.text_input("Enter OpenAI API Key", type="password")
@@ -33,11 +33,11 @@ with st.sidebar:
 initial_message = """
 Hi there! I'm your PakGPT Bot 🤖 
 Here are some questions you might ask me:\n
-🎀 What are the fundamental rights guaranteed to every Pakistani citizen?\n
-🎀 How can I register to vote in Pakistan?\n
-🎀 What are my rights as a citizen in Pakistan?\n
-🎀 What are the economic rights of Pakistani citizens?\n
-🎀 How can I protect my rights if they are violated?
+❓ What are the fundamental rights guaranteed to every Pakistani citizen?\n
+❓ How can I register to vote in Pakistan?\n
+❓ What are my rights as a citizen in Pakistan?\n
+❓ What are the economic rights of Pakistani citizens?\n
+❓ How can I protect my rights if they are violated?
 """
 
 # Store LLM generated responses
