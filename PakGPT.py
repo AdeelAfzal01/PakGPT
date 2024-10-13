@@ -70,7 +70,7 @@ if "api_key" in st.session_state:
             def save_context(self, inputs, outputs):
                 super().save_context(inputs, outputs)
                 # Limit the chat history to the last 3 messages
-                self.chat_memory.messages = self.chat_memory.messages[-2:]
+                self.chat_memory.messages = self.chat_memory.messages[-3:]
         # Use the custom memory class
         memory = LimitedConversationBufferMemory(memory_key='chat_history', return_messages=True, output_key='answer')
         
